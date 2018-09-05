@@ -1,0 +1,35 @@
+{
+  "name": "onearc_back",
+  "version": "1.0.0",
+  "description": "Backend for onearc application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "knex": "knex",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "depependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "knex": "^0.15.2",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3",
+    "pluralize": "^7.0.0",
+    "shortid": "^2.2.13"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.4",
+    "run-all": "^1.0.1"
+  }
+}
