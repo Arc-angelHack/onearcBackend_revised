@@ -53,15 +53,12 @@ async function isAuthorized(req, res, next) {
         }
 
         const token = parseToken(authorization)
-        const volId = token.sub.id
+        const userId = token.sub.id
 
-
-        // const volId = req.params.volId 
-        console.log("I am the volID", volId)
-        const volunteer = await db('volunteers').where({
-            id: volId
+        const user = await db('users').where({
+            id: userId
         }).first()
-        if (!volunteer) {
+        if (!user) {
             const message = `You are not authorized to update this list`
             return next({
                 status: 401,
@@ -73,7 +70,7 @@ async function isAuthorized(req, res, next) {
         console.log(e)
         next({
             status: 401,
-            error: `Session has expired. Volunteer, please log in again.`
+            error: `Session has expired. Pal, please log in again.`
         })
 
     }

@@ -3,7 +3,7 @@ const auth = require('../lib/auth')
 
 async function signup(req, res, next) {
     try {
-        const response = await model.create(req.body)
+        const response = await model.signup(req.body)
         const token = auth.createToken(response.id)
         const id = response.id
         const email = response.email
@@ -19,6 +19,7 @@ async function signup(req, res, next) {
 
         })
     } catch (e) {
+        console.log(e)
         next({
             status: 400,
             error: "User cannot be created"
@@ -54,6 +55,7 @@ async function login(req, res, next) {
 
 const getAll = async (req, res, next) => {
     let data = await model.getAll()
+    console.log("I am data in user.js controller", data)
     res.send({
         data
     })

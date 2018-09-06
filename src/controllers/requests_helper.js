@@ -17,6 +17,21 @@ async function index(req, res, next) {
     })
 }
 
+async function getOne(req, res, next) {
+    try {
+        const response = await model.getOne(req.body)
+        res.status(200).json({
+            [resourceName]: response
+        })
+    } catch (e) {
+        console.log(e)
+        next({
+            status: 400,
+            error: `Request could not be accessed by helper`
+        })
+    }
+}
+
 async function create(req, res, next) {
     try {
         const response = await model.create(req.body)

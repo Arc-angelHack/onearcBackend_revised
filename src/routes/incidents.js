@@ -2,6 +2,7 @@ const router = require('express').Router()
 const ctrl = require('../controllers/incidents')
 const auth = require('../lib/auth')
 
-router.get('/', ctr.getAll)
+console.log(ctrl.getAll)
+router.get('/', ctrl.getAll)
 
 module.exports = router

@@ -5,20 +5,16 @@ const {
 const db = require('../db/knex')
 const bcrypt = require('bcryptjs')
 
-function getAll() {
+const getAll = () => {
     return db('users')
         .returning('*')
-        .then(response => {
-            return response
-        })
+        .then((response) => response)
 }
 
-function getOne(userId) {
+const getOne = (userId) => {
     return db('users')
         .where('id', userId)
-        .then(response => {
-            return response
-        })
+        .then(response => response)
 }
 
 async function login({
@@ -33,7 +29,7 @@ async function login({
             if (!user)
                 throw new Error()
 
-            const isValid = await promisify(bcrypt.compare)(password, org.password) //hash the password that user puts in, compares with the hased in db
+            const isValid = await promisify(bcrypt.compare)(password, user.password) //hash the password that user puts in, compares with the hased in db
             if (!isValid)
                 throw new Error()
 
@@ -49,9 +45,13 @@ async function signup(body) {
         email: body.email,
         password: hashed
     }
-    return db('users').insert(user).returning('*').then(([response]) => {
-        return response
-    }).catch(console.log)
+    return db('users')
+        .insert(user)
+        .returning('*')
+        .then(([response]) => {
+            return response
+        })
+        .catch(console.log)
 }
 
 module.exports = {

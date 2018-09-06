@@ -1,4 +1,4 @@
-# pump-up-the-volunteers-server
+# onearc-backend 
 
 This repository is the backend for the react-native application for onearc, a result of AngelHack hackathon in Seattle, WA. 
 

@@ -8,4 +8,6 @@ const getAll = async (req, res, next) => {
 }
 
 
-module.exports = getAll 
+module.exports = {
+    getAll
+}
