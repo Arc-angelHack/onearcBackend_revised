@@ -31,6 +31,7 @@ To install & run locally for development:
 * fork this repo 
 * git clone 
 * npm install 
+* run psql, create a database (createdb onearc_dev)
 * create .env file like the .env-sample.md 
 * npm run dev (run server)
 * Use postman to test the routes 
