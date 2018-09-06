@@ -57,7 +57,7 @@ BASEURL = localhost:5000/
 Remember to set Authorization as Bearer Token in Postman, input the token.
 ![](./images/login.PNG)
 
-**POST /api/users/signup**
+* POST /api/users/signup
 ![](./images/post_user.PNG)
 When creating a user, you will get a token back. Use that to test login route.
 
