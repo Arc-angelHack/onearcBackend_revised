@@ -63,10 +63,10 @@ When creating a user, you will get a token back. Use that to test login route.
 
 ### CRUD actions for incidents/requests are similar
 
-**GET /api/:userId/incidents**
-**POST /api/:userId/incidents**
-**PATCH /api/:userId/incidents/:inId**
-**DELETE /api/:userId/incidents/:inId**
+*GET /api/:userId/incidents*
+*POST /api/:userId/incidents*
+*PATCH /api/:userId/incidents/:inId*
+*DELETE /api/:userId/incidents/:inId*
 
 ### CRUD actions for requests responsed by helper, basically manipulating the bridge table requests_helper in ERD
 
