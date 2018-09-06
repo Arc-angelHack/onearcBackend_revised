@@ -44,15 +44,15 @@ To install & run locally for development:
 
 BASEURL = localhost:5000/
 
-##### GET requests, incidents without logging in 
+### GET requests, incidents without logging in 
 **GET /requests**
 **GET /incidents**
 
-##### GET user(s) for front-end usage
+### GET user(s) for front-end usage
 **GET /api/users**
 **GET /api/users/:userId**
 
-##### POST signup/login
+### POST signup/login
 **POST /api/users/login**
 Remember to set Authorization as Bearer Token in Postman, input the token.
 ![](./images/login.PNG)
@@ -61,14 +61,14 @@ Remember to set Authorization as Bearer Token in Postman, input the token.
 ![](./images/post_user.PNG)
 When creating a user, you will get a token back. Use that to test login route.
 
-##### CRUD actions for incidents/requests are similar
+### CRUD actions for incidents/requests are similar
 
 **GET /api/:userId/incidents**
 **POST /api/:userId/incidents**
 **PATCH /api/:userId/incidents/:inId**
 **DELETE /api/:userId/incidents/:inId**
 
-##### CRUD actions for requests responsed by helper, basically manipulating the bridge table requests_helper in ERD
+### CRUD actions for requests responsed by helper, basically manipulating the bridge table requests_helper in ERD
 
 **GET /api/:userId/helpout**
 **GET /api/:userId/helpout/:reqId**
