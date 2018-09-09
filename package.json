@@ -31,8 +31,5 @@
     "dotenv": "^6.0.0",
     "nodemon": "^1.18.4",
     "run-all": "^1.0.1"
-  },
-  "dependencies": {
-    "knex": "^0.15.2"
   }
 }
