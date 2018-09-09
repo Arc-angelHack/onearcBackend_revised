@@ -10,7 +10,8 @@ This repository is the backend for the react-native application for onearc, a re
 
 - Diep Truong
 
-Students at [Galvanize](https://galvanize.com)
+## Deployed backend 
+- [https://onearc.herokuapp.com/](https://onearc.herokuapp.com/) - Front end can use this link as the BASE_URL to ping the back end. 
 
 ## Built With
 
