@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv').load()
+require('dotenv').load()
 const {
     DATABASE_URL_LOCAL,
     DATABASE_URL_PROD,
