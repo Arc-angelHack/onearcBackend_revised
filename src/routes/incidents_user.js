@@ -1,4 +1,4 @@
-const router = require('express').Router()
+const router = require('express').Router({ mergeParams: true })
 const ctrl = require('../controllers/incidents_user')
 const auth = require('../lib/auth')
 

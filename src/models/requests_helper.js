@@ -38,10 +38,7 @@ const create = (userId, reqId, body) => {
         offer_water: JSON.parse(body.offer_water),
         offer_medical: JSON.parse(body.offer_medical)
     }
-    // ??? update status to 
-    // db('requests')
-    // .where({id : reqId})
-    // .update()
+
 
     return db('helpers_requests')
         .insert(bodyInsert)

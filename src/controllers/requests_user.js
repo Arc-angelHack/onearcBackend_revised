@@ -20,7 +20,7 @@ async function index(req, res, next) {
 
 async function create(req, res, next) {
     try {
-        const response = await model.create(req.body)
+        const response = await model.create(req.body, req.params.userId)
         res.status(200).json({
             [resourceName]: response
         })

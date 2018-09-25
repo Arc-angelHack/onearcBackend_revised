@@ -1,10 +1,18 @@
 const model = require('../models/requests')
 
 const getAll = async (req, res, next) => {
-    let data = await model.getAll()
-    res.send({
-        data
-    })
+    try {
+        let data = await model.getAll()
+        res.send({
+            data
+        })
+    } catch (e) {
+        console.log(e)
+        next({
+            status: 404,
+            error: 'Could not retrieve all requests'
+        })
+    }
 }
 
 

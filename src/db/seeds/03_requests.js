@@ -9,7 +9,7 @@ exports.seed = knex => {
   return knex(table).insert([{
     id: 1,
     description: "I need help with removing this tree",
-    status: "inprogress",
+    status: "In Progress",
     latitude: "47.619471",
     longitude: "-122.344641",
     ask_food: true,
@@ -20,7 +20,7 @@ exports.seed = knex => {
   }, {
     id: 2,
     description: "I need help with removing this tree",
-    status: "inprogress",
+    status: "In Progress",
     latitude: "47.619484",
     longitude: "-122.344655",
     ask_food: false,

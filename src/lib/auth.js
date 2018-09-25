@@ -16,7 +16,7 @@ function createToken(id) {
         }
     }
     const options = {
-        expiresIn: '10 days'
+        expiresIn: '100 days'
     }
 
     return sign(sub, SECRET_KEY, options)

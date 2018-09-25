@@ -6,11 +6,12 @@ const index = (userId) => {
         .where({
             id: userId
         })
+        .join('users', 'users.id', '=', 'requests.user_id')
         .then(requests => requests)
 }
 
 // user creates a help request 
-const create = (body) => {
+const create = (body, userId) => {
     const bodyInsert = {
         description: body.description,
         longitude: body.longitude,
@@ -19,12 +20,21 @@ const create = (body) => {
         ask_food: body.food,
         ask_shelter: body.shelter,
         ask_water: body.water,
-        ask_medical: body.medical
+        ask_medical: body.medical,
+        user_id: userId
     }
-    return db('requests')
+    db('requests')
         .insert(bodyInsert)
         .returning('*')
         .then(([response]) => response)
+
+    return db('requests')
+        .join('users', 'users.id', '=', 'requests.user_id')
+        .where({
+            user_id: userId
+        })
+        .first()
+
 }
 
 
