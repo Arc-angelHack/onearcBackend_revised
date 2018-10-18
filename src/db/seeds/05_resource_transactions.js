@@ -2,20 +2,15 @@ const {
   hashSync
 } = require('bcryptjs')
 
-const table = 'helpers_requests'
-
+const table = 'resource_transactions'
 
 exports.seed = knex => {
   return knex(table).insert([{
     id: 1,
-    message: "I can offer help",
-    status: "inprogress",
-    offer_food: true,
-    offer_water: false,
-    offer_shelter: false,
-    offer_medical: false,
-    request_id: 1,
-    user_id: 1
+    reply: "I can offer help",
+    resource_id: "inprogress",
+
+    responding_user_id: 1
   }, {
     id: 2,
     message: "I am coming to help out.",

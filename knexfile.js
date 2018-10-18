@@ -5,8 +5,7 @@ const {
     NODE_ENV
 } = process.env
 
-
-console.log("I am DATABASE_URL",DATABASE_URL)
+console.log("I am DATABASE_URL", DATABASE_URL)
 const path = require('path')
 const config = {
     client: 'pg',
@@ -24,7 +23,8 @@ const config = {
 module.exports = {
     development: config,
     production: config,
-    testing: { ...config,
+    testing: {
+        ...config,
         connection: DATABASE_URL.replace('_dev', '_test')
     }
 }

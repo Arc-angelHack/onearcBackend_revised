@@ -39,7 +39,7 @@ To install & run locally for development:
 
 ## Database Structure
 
-![](./images/ERD.PNG)
+![](./images/ERD.png)
 
 ## Routes
 
