@@ -6,6 +6,7 @@ exports.up = knex => {
     table.string('street').notNullable().defaultsTo('')
     table.string('city').notNullable().defaultsTo('')
     table.string('state').notNullable().defaultsTo('')
+    table.integer('zip').notNullable()
     table.float('lat')
     table.float('long')
     table.string('description').notNullable()

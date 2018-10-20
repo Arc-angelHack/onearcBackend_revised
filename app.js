@@ -16,6 +16,8 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use('/incidents', require('./src/routes/incidents'))
+app.use('/sosrequests', require('./src/routes/sos_requests'))
+
 app.use('/requests', require('./src/routes/requests'))
 app.use('/api/users', require('./src/routes/users'))
 app.use('/api/:userId/incidents', require('./src/routes/incidents_user'))

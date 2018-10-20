@@ -34,6 +34,24 @@ exports.seed = knex => {
     lastname: 'Oxford',
     email: 'nancy@gmail.com',
     password: hashSync('pass'),
+  }, {
+    id: 6,
+    firstname: 'Halsey',
+    lastname: 'Rain',
+    email: 'halsey@gmail.com',
+    password: hashSync('pass'),
+  }, {
+    id: 7,
+    firstname: 'Lauren',
+    lastname: 'Large',
+    email: 'lauren@gmail.com',
+    password: hashSync('pass'),
+  }, {
+    id: 8,
+    firstname: 'Rain',
+    lastname: 'Forest',
+    email: 'rain@gmail.com',
+    password: hashSync('pass'),
   }]).then(() => {
     return knex.raw(`SELECT setval('${table}_id_seq', (SELECT MAX(id) FROM ${table}));`)
   });
