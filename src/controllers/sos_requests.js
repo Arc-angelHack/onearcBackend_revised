@@ -1,4 +1,5 @@
 const model = require('../models/sos_requests')
+const { parseToken } = require('../lib/auth')
 
 // get all sos requests in 20 miles range nearby 
 const getAll = async (req, res, next) => {
@@ -31,7 +32,9 @@ const getOne = async (req, res, next) => {
 
 const getAllByUser = async (req, res, next) => {
   try {
-    let data = await model.getAllByUser(req.params.userId)
+    const token = parseToken(req.headers.authorization)
+    const user_id = token.sub.id
+    let data = await model.getAllByUser(user_id)
     res.send({ data })
   } catch (e) {
     console.error(e)

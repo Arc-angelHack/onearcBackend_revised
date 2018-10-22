@@ -18,7 +18,6 @@ function createToken(id) {
     const options = {
         expiresIn: '100 days'
     }
-
     return sign(sub, SECRET_KEY, options)
 }
 // all tokens are signed with a unique id. 
@@ -32,7 +31,6 @@ function isLoggedIn(req, res, next) {
     try {
         parseToken(req.headers.authorization)
         next()
-
     } catch (e) {
         next({
             status: 401,
@@ -55,9 +53,11 @@ async function isAuthorized(req, res, next) {
         const token = parseToken(authorization)
         const userId = token.sub.id
 
-        const user = await db('users').where({
-            id: userId
-        }).first()
+        const user = await db('users')
+            .where({
+                id: userId
+            }).first()
+            
         if (!user) {
             const message = `You are not authorized to update this list`
             return next({
