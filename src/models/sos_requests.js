@@ -17,11 +17,19 @@ const getAll = async (query) => {
 // getOne SOS request
 const getOne = async (reqId) => {
   return joinTbs()
-    .where('sos_requests.id', reqId)
-    .first()
+  .where('sos_requests.id', reqId)
+  .first()
 }
+
+// getAll SOS requests made by a user 
+const getAllByUser = (userId) => {
+  return joinTbs()
+    .where('sos_requests.user_id', userId)
+}
+
 
 module.exports = {
   getAll,
+  getAllByUser,
   getOne
 }
