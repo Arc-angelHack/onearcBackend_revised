@@ -15,8 +15,10 @@ const getAll = async (query) => {
 }
 
 // getOne SOS request
-const getOne = () => {
-
+const getOne = async (reqId) => {
+  return joinTbs()
+    .where('sos_requests.id', reqId)
+    .first()
 }
 
 module.exports = {

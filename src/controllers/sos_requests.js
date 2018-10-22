@@ -16,7 +16,21 @@ const getAll = async (req, res, next) => {
   }
 }
 
+const getOne = async (req, res, next) => {
+  try {
+    let data = await model.getOne(req.params.reqId)
+    res.send({ data })
+  } catch (e) {
+    console.error(e)
+    next({
+      status: 404,
+      error: 'Could not retrieve all requests'
+    })
+  }
+}
+
 
 module.exports = {
-  getAll
+  getAll,
+  getOne
 }
