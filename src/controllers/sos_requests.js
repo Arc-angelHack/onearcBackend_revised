@@ -45,9 +45,25 @@ const getAllByUser = async (req, res, next) => {
   }
 }
 
+const createSOS = async (req, res, next) => {
+  try {
+    const token = parseToken(req.headers.authorization)
+    const user_id = token.sub.id
+    let response = await model.createSOS(user_id, req.body)
+    res.status(201).json({ ...response })
+  } catch (e) {
+    console.error(e)
+    next({
+      status: 404,
+      error: 'Could not create SOS request'
+    })
+  }
+}
+
 
 module.exports = {
   getAll,
   getAllByUser,
-  getOne
+  getOne,
+  createSOS
 }

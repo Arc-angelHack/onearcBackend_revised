@@ -17,8 +17,8 @@ const getAll = async (query) => {
 // getOne SOS request
 const getOne = async (reqId) => {
   return joinTbs()
-  .where('sos_requests.id', reqId)
-  .first()
+    .where('sos_requests.id', reqId)
+    .first()
 }
 
 // getAll SOS requests made by a user 
@@ -27,9 +27,27 @@ const getAllByUser = (userId) => {
     .where('sos_requests.user_id', userId)
 }
 
+const createSOS = (userId, { street, city, state, zip, lat, long, description, finished }) => {
+  const bodyInsert = {
+    user_id: userId,
+    street,
+    city,
+    state,
+    zip,
+    lat,
+    long,
+    description,
+    finished
+  }
+
+  return db('sos_requests')
+    .insert(bodyInsert)
+    .returning('*')
+}
 
 module.exports = {
   getAll,
   getAllByUser,
-  getOne
+  getOne,
+  createSOS
 }
