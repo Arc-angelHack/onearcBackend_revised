@@ -43,28 +43,32 @@ function isLoggedIn(req, res, next) {
 
 async function isAuthorized(req, res, next) {
     try {
-        const authorization = req.headers.authorization
-        if (!authorization) {
-            const message = `You are not authorized to access this route`
-            return next({
-                status: 401,
-                error: message
-            })
+        const message = {
+            status: 401,
+            error: `You are not authorized to access this route`
         }
+        const authorization = req.headers.authorization
 
+        if (!authorization) {
+            return next(message)
+        }
+        
         const token = parseToken(authorization)
         const userId = token.sub.id
+        const userCheck = req.params.userId
+
+        if (userId !== userCheck) {
+            return next(message)
+        }
 
         const user = await db('users').where({
             id: userId
         }).first()
+        
         if (!user) {
-            const message = `You are not authorized to update this list`
-            return next({
-                status: 401,
-                error: message
-            })
+            return next(message)
         }
+
         next()
     } catch (e) {
         console.log(e)
