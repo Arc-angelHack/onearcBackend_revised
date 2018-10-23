@@ -21,6 +21,8 @@ app.use('/sosrequests', require('./src/routes/sos_requests'))
 app.use('/requests', require('./src/routes/requests'))
 app.use('/api/users', require('./src/routes/users'))
 
+app.use('/api/resOffer', require('./src/routes/resource_offers')) // CRUD for resource offers
+
 app.use('/api/:userId/incidents', require('./src/routes/incidents_user'))
 app.use('/api/:userId/requests', require('./src/routes/requests_user')) // a victim can view all the help requests they ask for 
 app.use('/api/:userId/helpout', require('./src/routes/requests_helper')) // a helper can view all the help requests that he offers 
