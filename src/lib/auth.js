@@ -18,7 +18,6 @@ function createToken(id) {
     const options = {
         expiresIn: '100 days'
     }
-
     return sign(sub, SECRET_KEY, options)
 }
 // all tokens are signed with a unique id. 
@@ -32,7 +31,6 @@ function isLoggedIn(req, res, next) {
     try {
         parseToken(req.headers.authorization)
         next()
-
     } catch (e) {
         next({
             status: 401,

@@ -42,7 +42,6 @@ async function login(req, res, next) {
             email,
             firstname,
             lastname
-
         })
     } catch (e) {
         next({

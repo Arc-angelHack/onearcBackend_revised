@@ -1,4 +1,5 @@
 const model = require('../models/sos_requests')
+const { parseToken } = require('../lib/auth')
 
 // get all sos requests in 20 miles range nearby 
 const getAll = async (req, res, next) => {
@@ -11,7 +12,7 @@ const getAll = async (req, res, next) => {
     console.error(e)
     next({
       status: 404,
-      error: 'Could not retrieve all requests'
+      error: 'Could not retrieve all SOS requests'
     })
   }
 }
@@ -24,7 +25,37 @@ const getOne = async (req, res, next) => {
     console.error(e)
     next({
       status: 404,
-      error: 'Could not retrieve all requests'
+      error: 'Could not retrieve a single SOS request'
+    })
+  }
+}
+
+const getAllByUser = async (req, res, next) => {
+  try {
+    const token = parseToken(req.headers.authorization)
+    const user_id = token.sub.id
+    let data = await model.getAllByUser(user_id)
+    res.send({ data })
+  } catch (e) {
+    console.error(e)
+    next({
+      status: 404,
+      error: 'Could not retrieve all SOS requests by this user'
+    })
+  }
+}
+
+const createSOS = async (req, res, next) => {
+  try {
+    const token = parseToken(req.headers.authorization)
+    const user_id = token.sub.id
+    let response = await model.createSOS(user_id, req.body)
+    res.status(201).json({ ...response })
+  } catch (e) {
+    console.error(e)
+    next({
+      status: 404,
+      error: 'Could not create SOS request'
     })
   }
 }
@@ -32,5 +63,7 @@ const getOne = async (req, res, next) => {
 
 module.exports = {
   getAll,
-  getOne
+  getAllByUser,
+  getOne,
+  createSOS
 }
