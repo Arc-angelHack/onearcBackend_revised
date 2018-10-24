@@ -40,10 +40,14 @@ To install & run locally for development:
 ## Database Structure
 
 ![](./images/ERD.png)
+[https://goo.gl/tMqF9j](ERD_link)
 
 ## Routes
 
 BASEURL = localhost:5000/
+
+## POSTMAN routes 
+
 
 ### GET requests, incidents without logging in 
 * GET /requests
@@ -69,10 +73,14 @@ When creating a user, you will get a token back. Use that to test login route.
 * PATCH /api/:userId/incidents/:inId
 * DELETE /api/:userId/incidents/:inId
 
-### CRUD actions for requests responsed by helper, basically manipulating the bridge table requests_helper in ERD
+### CRUD actions for sos_requests
+**ANY USER**
+* GET /sosrequests?lat=37.688643&long=-122.45121&range=20
+* GET /sosrequests/:reqId
 
-* GET /api/:userId/helpout
-* GET /api/:userId/helpout/:reqId
-* POST /api/:userId/helpout
-* PATCH /api/:userId/helpout/:reqId
-* DELETE /api/:userId/helpout/:reqId
+**AN AUTHORIZED USER**
+* GET /sosrequests/byuser/:userId (all sos requests, both finished and not)
+* GET /sosrequests/byuser/:userId/current (get current SOS request)
+* POST /sosrequests (create a SOS request)
+* PATCH /sosrequests/:userId/update/:reqId (update a SOS request)
+* PATCH /sosrequests/:userId/end/:reqId (end the current SOS request)
