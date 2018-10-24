@@ -41,7 +41,7 @@ const createRequest = async (req, res, next) => {
 
 const updateRequest = async (req, res, next) => {
     try {
-        const data = await model.updateRequest(req.params.resId)
+        const data = await model.updateRequest(req.params.resId, req.body)
         res.send({data})
     } catch (e) {
         console.log(e)
@@ -54,7 +54,7 @@ const updateRequest = async (req, res, next) => {
 
 const completeRequest = async (req, res, next) => {
     try {
-        const data = await model.completeRequest(req.body.id)
+        const data = await model.completeRequest(req.params.resId)
         res.send({data})
     } catch (e) {
         console.log(e)
@@ -67,7 +67,7 @@ const completeRequest = async (req, res, next) => {
 
 const deleteRequest = async (req, res, next) => {
     try {
-        const data = await model.deleteRequest(req.body.id)
+        const data = await model.deleteRequest(req.params.resId)
         res.send({data})
     } catch (e) {
         console.log(e)

@@ -55,8 +55,8 @@ async function isAuthorized(req, res, next) {
         
         const token = parseToken(authorization)
         const userId = token.sub.id
-        const userCheck = req.params.userId
-
+        const userCheck = parseInt(req.params.userId)
+        console.log("in auth", userId, userCheck)
         if (userId !== userCheck) {
             return next(message)
         }

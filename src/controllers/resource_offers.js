@@ -41,7 +41,7 @@ const createOffer = async (req, res, next) => {
 
 const updateOffer = async (req, res, next) => {
     try {
-        const data = await model.updateOffer(req.params.resId)
+        const data = await model.updateOffer(req.params.resId, req.body)
         res.send({data})
     } catch (e) {
         console.log(e)
@@ -54,7 +54,7 @@ const updateOffer = async (req, res, next) => {
 
 const completeOffer = async (req, res, next) => {
     try {
-        const data = await model.completeOffer(req.body.id)
+        const data = await model.completeOffer(req.params.resId)
         res.send({data})
     } catch (e) {
         console.log(e)
@@ -67,7 +67,7 @@ const completeOffer = async (req, res, next) => {
 
 const deleteOffer = async (req, res, next) => {
     try {
-        const data = await model.deleteOffer(req.body.id)
+        const data = await model.deleteOffer(req.params.resId)
         res.send({data})
     } catch (e) {
         console.log(e)

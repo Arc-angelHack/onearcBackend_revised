@@ -18,10 +18,10 @@ const getAll = async (query) => {
 }
 
 const getOne = (resId) => {
-    return joinTbs()
-        .where({
-            id: resId
-        })
+    return db('resources')
+        .select('resources.id AS resource_id', '*')
+        .join('users', 'users.id', '=', 'resources.user_id')
+        .where('resources.id', resId)
         .first()
 }
 
@@ -36,7 +36,7 @@ const createOne = (body) => {
         .catch(console.log)
 }
 
-const updateRequest = ({id, ...body}) => {
+const updateRequest = (id, body) => {
     return db('resources')
         .where({
             id
