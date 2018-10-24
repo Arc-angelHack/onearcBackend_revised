@@ -7,8 +7,6 @@ const {
 } = require('jsonwebtoken')
 const db = require('../db/knex')
 
-
-
 function createToken(id) {
     const sub = {
         sub: {
@@ -48,22 +46,25 @@ async function isAuthorized(req, res, next) {
         const authorization = req.headers.authorization
 
         if (!authorization) {
+            console.log('there is no authorization in the header')
             return next(message)
         }
-        
+
         const token = parseToken(authorization)
-        const userId = token.sub.id
-        const userCheck = req.params.userId
+        const userId = parseInt(token.sub.id)
+        const userCheck = parseInt(req.params.userId)
 
         if (userId !== userCheck) {
+            console.log('the id in req.params does not match the token id')
             return next(message)
         }
 
         const user = await db('users').where({
             id: userId
         }).first()
-        
+
         if (!user) {
+            console.log('cannot find that user in the database')
             return next(message)
         }
 
