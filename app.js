@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -58,64 +57,4 @@ if (NODE_ENV !== 'testing') {
     app.listen(PORT, listener)
 }
 
-=======
-const express = require('express')
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const cors = require('cors')
-const app = express()
-const {
-    PORT = 5000, NODE_ENV = 'development'
-} = process.env
-
-if (NODE_ENV === 'development') {
-    require('dotenv').load()
-    app.use(morgan('dev'))
-}
-
-app.use(bodyParser.json())
-app.use(cors())
-
-app.use('/incidents', require('./src/routes/incidents'))
-app.use('/sosrequests', require('./src/routes/sos_requests'))
-
-app.use('/requests', require('./src/routes/requests'))
-app.use('/api/users', require('./src/routes/users'))
-
-app.use('/api/resOffer', require('./src/routes/resource_offers')) // CRUD for resource offers
-
-app.use('/api/:userId/incidents', require('./src/routes/incidents_user'))
-app.use('/api/:userId/requests', require('./src/routes/requests_user')) // a victim can view all the help requests they ask for 
-app.use('/api/:userId/helpout', require('./src/routes/requests_helper')) // a helper can view all the help requests that he offers 
-
-app.use((err, req, res, next) => {
-    if (NODE_ENV === 'development') console.error(err)
-
-    const message = `Something went wrong.`
-    const {
-        status = 500, error = message
-    } = err
-
-    res.status(status).json({
-        status,
-        error
-    })
-})
-
-app.use((req, res, next) => {
-    const status = 404
-    const error = `Could not ${req.method} ${req.url}`
-
-    next({
-        status,
-        error
-    })
-})
-
-if (NODE_ENV !== 'testing') {
-    const listener = () => console.log(`Listening on port ${PORT}!`)
-    app.listen(PORT, listener)
-}
-
->>>>>>> 9be192a23e0bbe25177850ddc6ac9a1c0b9c1b09
 module.exports = app
