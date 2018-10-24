@@ -23,6 +23,8 @@ app.use('/api/users', require('./src/routes/users'))
 
 app.use('/api/resOffer', require('./src/routes/resource_offers')) // CRUD for resource offers
 app.use('/api/resRequest', require('./src/routes/resource_requests')) // CRUD for resource requests (similar to above; can merge eventually)
+app.use('/api/resTrans', require('./src/routes/resource_transactions')) // Create & Delete for Resource Transactions
+
 // Old?
 app.use('/api/:userId/incidents', require('./src/routes/incidents_user'))
 app.use('/api/:userId/requests', require('./src/routes/requests_user')) // a victim can view all the help requests they ask for 
