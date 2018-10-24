@@ -18,7 +18,6 @@ function createToken(id) {
     const options = {
         expiresIn: '100 days'
     }
-
     return sign(sub, SECRET_KEY, options)
 }
 // all tokens are signed with a unique id. 
@@ -32,7 +31,6 @@ function isLoggedIn(req, res, next) {
     try {
         parseToken(req.headers.authorization)
         next()
-
     } catch (e) {
         next({
             status: 401,
@@ -55,8 +53,8 @@ async function isAuthorized(req, res, next) {
         
         const token = parseToken(authorization)
         const userId = token.sub.id
-        const userCheck = parseInt(req.params.userId)
-        console.log("in auth", userId, userCheck)
+        const userCheck = req.params.userId
+
         if (userId !== userCheck) {
             return next(message)
         }
