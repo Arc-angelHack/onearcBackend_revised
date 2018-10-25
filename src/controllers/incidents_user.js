@@ -1,7 +1,7 @@
 const {
     plural
 } = require('pluralize')
-const model = require('../models/requests_user')
+const model = require('../models/incidents_user')
 const {
     parseToken
 } = require('../lib/auth')
