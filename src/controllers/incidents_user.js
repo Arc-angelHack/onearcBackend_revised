@@ -1,32 +1,47 @@
-const {
-    plural
-} = require('pluralize')
+const { plural } = require('pluralize')
 const model = require('../models/incidents_user')
-const {
-    parseToken
-} = require('../lib/auth')
+const { parseToken } = require('../lib/auth')
 
-const resourceName = 'incident'
+/////////////////
+// BY A SINGLE USER
+////////////////
 
-// get all the incidents created by a user 
-async function index(req, res, next) {
+const retrieveId = (req) => {
     const token = parseToken(req.headers.authorization)
-    const response = await model.get(req.params.userId)
+    const user_id = token.sub.id
+    return user_id
+}
 
-    res.json({
-        [plural(resourceName)]: response
-    })
+// get all the incidents made by a user 
+const index = async (req, res, next) => {
+    try {
+        const user_id = retrieveId(req)
+        const data = await model.index(user_id)
+        res.send({ data })
+    } catch (e) {
+        console.error(e)
+        next({
+            status: 404,
+            error: 'Could not get all incidents by this user'
+        })
+    }
 }
 
 // user creates an incident report 
-async function create(req, res, next) {
+const create = async (req, res, next) => {
     try {
-        const response = await model.create(req.body)
-        res.status(200).json({
-            [resourceName]: response
-        })
+        const user_id = retrieveId(req)
+        const response = await model.create(user_id, req.body)
+        if (response) {
+            res.status(201).json({ data: response[0] })
+        } else {
+            next({
+                status: 400,
+                error: `Incident already exists`
+            })
+        }
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: `Incident could not be created`
@@ -35,14 +50,14 @@ async function create(req, res, next) {
 }
 
 
-async function patch(req, res, next) {
+const patch = async (req, res, next) => {
     try {
-        const response = await model.patch(req.params.reqId, req.body)
-        res.json({
-            [resourceName]: response
-        })
+        const user_id = retrieveId(req)
+        const inId = req.params.inId
+        const data = await model.patch(user_id, inId, req.body)
+        res.send({ data })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: `Incident could not be updated`
@@ -50,15 +65,12 @@ async function patch(req, res, next) {
     }
 }
 
-async function destroy (req, res, next) {
+const destroy = async (req, res, next) => {
     try {
-        const response = await model.destroy(req.params.reqId)
-        res.json({
-            [resourceName]: response
-        })
-
+        const data = await model.destroy(req.params.inId)
+        res.send({ data })
     } catch (e) {
-        console.log(e)
+        console.error(e)
         next({
             status: 400,
             error: `Incident could not be destroyed`
