@@ -78,7 +78,7 @@ const updateRequest = async (userId, reqId, body) => {
         ...body,
         updated_at: new Date()
       })
-      .where({ id: userId })
+      .where({ id: reqId }) // checking this for sure
       .returning('*')
   } catch (e) {
     console.error(e)

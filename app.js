@@ -17,7 +17,7 @@ app.use(cors())
 
 app.use('/api/users', require('./src/routes/users'))
 app.use('/incidents', require('./src/routes/incidents'))
-app.use('/api/:userId/incidents', require('./src/routes/incidents_user')) // incidents created by a user 
+app.use('/incidents/byuser', require('./src/routes/incidents_user')) // incidents created by a user 
 app.use('/sosrequests', require('./src/routes/sos_requests'))
 app.use('/api/resOffer', require('./src/routes/resource_offers')) // CRUD for resource offers
 app.use('/api/resRequest', require('./src/routes/resource_requests')) // CRUD for resource requests (similar to above; can merge eventually)
