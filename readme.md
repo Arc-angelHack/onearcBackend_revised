@@ -39,7 +39,7 @@ To install & run locally for development:
 
 ## Database Structure
 
-![](./images/ERD.png)
+![](./images/ERD.PNG)
 [https://goo.gl/tMqF9j](ERD_link)
 
 ## Routes
@@ -47,7 +47,7 @@ To install & run locally for development:
 BASEURL = localhost:5000/
 
 ## POSTMAN routes 
-
+[https://www.getpostman.com/collections/feb4b29ceb29a5ed89fd](Postman_Route)
 
 ### GET requests, incidents without logging in 
 * GET /requests
