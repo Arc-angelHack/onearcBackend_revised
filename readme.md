@@ -47,7 +47,7 @@ To install & run locally for development:
 BASEURL = localhost:5000/
 
 ## POSTMAN routes 
-[https://www.getpostman.com/collections/feb4b29ceb29a5ed89fd](Postman_Route)
+[https://www.getpostman.com/collections/0659d4deea1635c2cacf](Postman_Route)
 
 ### GET requests, incidents without logging in 
 * GET /requests
