@@ -66,12 +66,16 @@ Remember to set Authorization as Bearer Token in Postman, input the token.
 ![](./images/post_user.PNG)
 When creating a user, you will get a token back. Use that to test login route.
 
-### CRUD actions for incidents/requests are similar
+### CRUD actions for incidents
+**ANY USER**
+* GET /incidents?lat=37.688643&long=-122.45121&range=20
+* GET /incidents/:inId
 
-* GET /api/:userId/incidents
-* POST /api/:userId/incidents
-* PATCH /api/:userId/incidents/:inId
-* DELETE /api/:userId/incidents/:inId
+**AN AUTHORIZED USER**
+* GET /incidents/byuser/:userId
+* POST /incidents/byuser
+* PATCH /incidents/byuser/:userId/update/:inId
+* DELETE /incidents/byuser/:userId/delete/:inId
 
 ### CRUD actions for sos_requests
 **ANY USER**
