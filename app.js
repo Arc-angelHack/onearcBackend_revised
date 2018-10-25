@@ -15,20 +15,13 @@ if (NODE_ENV === 'development') {
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use('/incidents', require('./src/routes/incidents'))
-app.use('/sosrequests', require('./src/routes/sos_requests'))
-
-app.use('/requests', require('./src/routes/requests'))
 app.use('/api/users', require('./src/routes/users'))
-
+app.use('/incidents', require('./src/routes/incidents'))
+app.use('/api/:userId/incidents', require('./src/routes/incidents_user')) // incidents created by a user 
+app.use('/sosrequests', require('./src/routes/sos_requests'))
 app.use('/api/resOffer', require('./src/routes/resource_offers')) // CRUD for resource offers
 app.use('/api/resRequest', require('./src/routes/resource_requests')) // CRUD for resource requests (similar to above; can merge eventually)
 app.use('/api/resTrans', require('./src/routes/resource_transactions')) // Create & Delete for Resource Transactions
-
-// Old?
-app.use('/api/:userId/incidents', require('./src/routes/incidents_user'))
-app.use('/api/:userId/requests', require('./src/routes/requests_user')) // a victim can view all the help requests they ask for 
-app.use('/api/:userId/helpout', require('./src/routes/requests_helper')) // a helper can view all the help requests that he offers 
 
 app.use((err, req, res, next) => {
     if (NODE_ENV === 'development') console.error(err)
@@ -37,7 +30,6 @@ app.use((err, req, res, next) => {
     const {
         status = 500, error = message
     } = err
-
     res.status(status).json({
         status,
         error
@@ -47,7 +39,6 @@ app.use((err, req, res, next) => {
 app.use((req, res, next) => {
     const status = 404
     const error = `Could not ${req.method} ${req.url}`
-
     next({
         status,
         error
