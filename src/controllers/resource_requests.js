@@ -1,4 +1,4 @@
-const model = require('../models/resource_offers')
+const model = require('../models/resource_requests')
 
 const getAll = async (req, res, next) => {
     try {
@@ -8,7 +8,7 @@ const getAll = async (req, res, next) => {
         console.log(e)
         next({
             status: 404,
-            error: 'Could not retrieve all resources offerings'
+            error: 'Could not retrieve all resources requests'
         })
     }
 }
@@ -21,12 +21,12 @@ const getOne = async (req, res, next) => {
         console.log(e)
         next({
             status: 404,
-            error: 'Could not retreive selected resource offering'
+            error: 'Could not retreive selected resource request'
         })
     }
 }
 
-const createOffer = async (req, res, next) => {
+const createRequest = async (req, res, next) => {
     try {
         const data = await model.createOne(req.body)
         res.send({data})
@@ -34,46 +34,46 @@ const createOffer = async (req, res, next) => {
         console.log(e)
         next({
             status: 404,
-            error: 'Could not post resource offer at this time'
+            error: 'Could not post resource request at this time'
         })
     }
 }
 
-const updateOffer = async (req, res, next) => {
+const updateRequest = async (req, res, next) => {
     try {
-        const data = await model.updateOffer(req.params.resId, req.body)
+        const data = await model.updateRequest(req.params.resId, req.body)
         res.send({data})
     } catch (e) {
         console.log(e)
         next({
             status: 404,
-            error: 'Could not update selected resource offering'
+            error: 'Could not update selected resource request'
         })
     }
 }
 
-const completeOffer = async (req, res, next) => {
+const completeRequest = async (req, res, next) => {
     try {
-        const data = await model.completeOffer(req.params.resId)
+        const data = await model.completeRequest(req.params.resId)
         res.send({data})
     } catch (e) {
         console.log(e)
         next({
             status: 404,
-            error: 'Could not complete selected offer at this time'
+            error: 'Could not complete selected request at this time'
         })
     }
 }
 
-const deleteOffer = async (req, res, next) => {
+const deleteRequest = async (req, res, next) => {
     try {
-        const data = await model.deleteOffer(req.params.resId)
+        const data = await model.deleteRequest(req.params.resId)
         res.send({data})
     } catch (e) {
         console.log(e)
         next({
             status: 404,
-            error: 'Could not delete offer at this time'
+            error: 'Could not delete request at this time'
         })
     }
 }
@@ -81,8 +81,8 @@ const deleteOffer = async (req, res, next) => {
 module.exports = {
     getAll,
     getOne,
-    createOffer,
-    updateOffer,
-    completeOffer,
-    deleteOffer
+    createRequest,
+    updateRequest,
+    completeRequest,
+    deleteRequest
 }

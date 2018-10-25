@@ -4,7 +4,7 @@ const { filterByLocation } = require('./helpers')
 const joinTbs = () => {
     return db('resources')
         .where({
-            is_an_offer: true,
+            is_an_offer: false,
             finished: false
         })
         .select('resources.id AS resource_id', '*')
@@ -12,9 +12,9 @@ const joinTbs = () => {
 }
 
 const getAll = async (query) => {
-    const resourceOffers = await joinTbs()
-    const nearbyOffers = filterByLocation(resourceOffers, query)
-    return nearbyOffers
+    const resourceRequests = await joinTbs()
+    const nearbyRequests = filterByLocation(resourceRequests, query)
+    return nearbyRequests
 }
 
 const getOne = (resId) => {
@@ -29,14 +29,14 @@ const createOne = (body) => {
     return db('resources')
         .insert({
             ...body,
-            is_an_offer: true
+            is_an_offer: false
         })
         .returning('*')
         .then(([response]) => response)
         .catch(console.log)
 }
 
-const updateOffer = (id, body) => {
+const updateRequest = (id, body) => {
     return db('resources')
         .where({
             id
@@ -49,7 +49,7 @@ const updateOffer = (id, body) => {
         .catch(console.log)
 }
 
-const completeOffer = (resId) => {
+const completeRequest = (resId) => {
     return db('resources')
         .where({
             id: resId
@@ -62,7 +62,7 @@ const completeOffer = (resId) => {
         .catch(console.log)
 }
 
-const deleteOffer = (resId) => {
+const deleteRequest = (resId) => {
     return db('resources')
         .where({
             id: resId
@@ -77,7 +77,7 @@ module.exports = {
     getAll,
     getOne,
     createOne,
-    updateOffer,
-    completeOffer,
-    deleteOffer
+    updateRequest,
+    completeRequest,
+    deleteRequest
 }
