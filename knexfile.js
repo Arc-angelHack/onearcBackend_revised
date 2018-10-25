@@ -5,7 +5,6 @@ const {
     NODE_ENV
 } = process.env
 
-console.log("I am DATABASE_URL", DATABASE_URL)
 const path = require('path')
 const config = {
     client: 'pg',
