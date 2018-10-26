@@ -1,5 +1,7 @@
 # onearc-backend
 
+This backend is deployed at [https://onearcback.herokuapp.com/](https://onearcback.herokuapp.com/).
+
 This repository is the backend for the react-native application for onearc, a result of AngelHack hackathon in Seattle, WA.
 
 - This application allows users to stay safe and seek help during disaster.
