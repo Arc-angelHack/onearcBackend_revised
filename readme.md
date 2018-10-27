@@ -41,7 +41,7 @@ To install & run locally for development:
 
 ## Database Structure
 
-![](./images/ERD.PNG)
+![](./images/ERD2.PNG)
 [https://goo.gl/tMqF9j](ERD_link)
 
 ## Routes
