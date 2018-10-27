@@ -21,8 +21,22 @@ const filterByLocation = (requests, { lat, long, range }) => {
   })
 }
 
+const find = (tableName, userId, id) => {
+  return db(tableName)
+      .where({ user_id: userId, id })
+      .first()
+}
+
+const retrieveId = (req) => {
+  const token = parseToken(req.headers.authorization)
+  const user_id = token.sub.id
+  return user_id
+}
+
 
 module.exports = {
   getDistance,
-  filterByLocation
+  filterByLocation,
+  find,
+  retrieveId
 }

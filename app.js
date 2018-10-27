@@ -15,10 +15,19 @@ if (NODE_ENV === 'development') {
 app.use(bodyParser.json())
 app.use(cors())
 
+// user's info
 app.use('/api/users', require('./src/routes/users'))
+app.use('/profile/personal', require('./src/routes/personal'))
+app.use('/profile/medical', require('./src/routes/medical'))
+
+// incidents
 app.use('/incidents', require('./src/routes/incidents'))
 app.use('/incidents/byuser', require('./src/routes/incidents_user')) // incidents created by a user 
+
+// sos help requests
 app.use('/sosrequests', require('./src/routes/sos_requests'))
+
+// resources
 app.use('/api/resOffer', require('./src/routes/resource_offers')) // CRUD for resource offers
 app.use('/api/resRequest', require('./src/routes/resource_requests')) // CRUD for resource requests (similar to above; can merge eventually)
 app.use('/api/resTrans', require('./src/routes/resource_transactions')) // Create & Delete for Resource Transactions
