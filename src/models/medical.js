@@ -24,7 +24,7 @@ const getAll = (userId) => {
     .first()
 }
 
-const create = async (userId, { blood_type, medication, insurance, emergency_name, emergency_phone }) => {
+const create = async (userId, { blood_type, allergies, medication, insurance, emergency_name, emergency_phone }) => {
   const bodyInsert = {
     blood_type,
     allergies,

@@ -1,6 +1,8 @@
-const {
-    promisify
-} = require('util')
+const { promisify } = require('util')
+
+const personal = require('./personal')
+const medical = require('./medical')
+
 
 const db = require('../db/knex')
 const bcrypt = require('bcryptjs')
@@ -11,10 +13,17 @@ const getAll = () => {
         .then((response) => response)
 }
 
-const getOne = (userId) => {
-    return db('users')
+const getOne = async (userId) => {
+    const personalInfo = await personal.getAll(userId)
+    const medicalInfo = await medical.getAll(userId)
+    delete personalInfo.id
+    delete medicalInfo.id
+    const user = await db('users')
         .where('id', userId)
-        .then(response => response)
+        .first()
+    user.personal = personalInfo
+    user.medical = medicalInfo
+    return user
 }
 
 async function login({

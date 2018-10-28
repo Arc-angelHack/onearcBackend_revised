@@ -12,10 +12,10 @@ const findPersonal = (tableName, userId, birth_date, phone) => {
 }
 
 ////////////////////////////
-// PROFILE: MEDICAL SECTION
+// PROFILE: PERSONAL SECTION
 ///////////////////////////
 
-// get all medical info for a user 
+// get all personal info for a user 
 const getAll = (userId) => {
   return db(tbName)
     .where({
