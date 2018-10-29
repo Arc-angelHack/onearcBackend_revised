@@ -1,5 +1,5 @@
 const { parseToken } = require('../lib/auth')
-
+const db = require('../db/knex')
 
 const getDistance = (a, b) => {
   const R = 3959 // miles
