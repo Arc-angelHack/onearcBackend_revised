@@ -13,7 +13,7 @@ This repository is the backend for the react-native application for onearc, a re
 - Diep Truong
 
 ## Deployed backend 
-- [https://onearc.herokuapp.com/](https://onearc.herokuapp.com/) - Front end can use this link as the BASE_URL to ping the back end. 
+- [https://onearcback.herokuapp.com/](https://onearcback.herokuapp.com/) - Front end can use this link as the BASE_URL to ping the back end. 
 
 ## Built With
 
