@@ -7,6 +7,7 @@ exports.up = knex => {
         table.string('lastname').notNullable().defaultsTo('')
         table.string('email').notNullable().unique()
         table.text('password').notNullable()
+        table.string('avatar').notNullable().defaultsTo('https://goo.gl/ZCTNp3')
         table.timestamps(true, true)
     })
 }
