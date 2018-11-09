@@ -43,16 +43,16 @@ const create = async (userId, { blood_type, allergies, medication, insurance, em
   }
 }
 
-const patch = async (userId, medId, body) => {
+const patch = async (userId, body) => {
   try {
-    const found = await find(tbName, userId, medId)
+    const found = await getAll(userId)
     return db(tbName)
+      .where({ user_id: userId })
       .update({
         ...found,
         ...body,
         updated_at: new Date()
       })
-      .where({ id: medId })
       .returning('*')
   } catch (e) {
     console.error(e)
@@ -62,7 +62,7 @@ const patch = async (userId, medId, body) => {
 const destroy = (id) => {
   return db(tbName)
       .where({
-          id
+          user_id: id
       })
       .del()
       .returning('*')
