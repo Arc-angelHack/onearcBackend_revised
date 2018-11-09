@@ -45,8 +45,7 @@ const create = async (req, res, next) => {
 const patch = async (req, res, next) => {
   try {
       const user_id = retrieveId(req)
-      const medId = req.params.medId
-      const data = await model.patch(user_id, medId, req.body)
+      const data = await model.patch(user_id, req.body)
       res.send({ data })
   } catch (e) {
       console.error(e)
@@ -60,7 +59,7 @@ const patch = async (req, res, next) => {
 // user can destroy medical info
 const destroy = async (req, res, next) => {
   try {
-      const data = await model.destroy(req.params.medId)
+      const data = await model.destroy(req.params.userId)
       res.send({ data })
   } catch (e) {
       console.error(e)
