@@ -54,7 +54,6 @@ async function login(req, res, next) {
 
 const getAll = async (req, res, next) => {
     let data = await model.getAll()
-    console.log("I am data in user.js controller", data)
     res.send({
         data
     })
