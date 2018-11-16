@@ -42,16 +42,16 @@ const create = async (userId, { birth_date, city, state, phone, gps }) => {
   }
 }
 
-const patch = async (userId, perId, body) => {
+const patch = async (userId, body) => {
   try {
-    const found = await find(tbName, userId, perId)
+    const found = await getAll(userId)
     return db(tbName)
+      .where({ user_id: userId })
       .update({
         ...found,
         ...body,
         updated_at: new Date()
       })
-      .where({ id: perId })
       .returning('*')
   } catch (e) {
     console.error(e)
@@ -61,7 +61,7 @@ const patch = async (userId, perId, body) => {
 const destroy = (id) => {
   return db(tbName)
     .where({
-      id
+      user_id: id
     })
     .del()
     .returning('*')
