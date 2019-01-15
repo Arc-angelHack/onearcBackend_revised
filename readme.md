@@ -11,6 +11,7 @@ This repository is the backend for the react-native application for onearc, a re
 ## Author
 
 - Diep Truong
+- Dillon Easter
 
 ## Deployed backend 
 - [https://onearcback.herokuapp.com/](https://onearcback.herokuapp.com/) - Front end can use this link as the BASE_URL to ping the back end. 
