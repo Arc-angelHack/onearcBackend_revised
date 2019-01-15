@@ -31,7 +31,7 @@ OneArc is a seamless mobile app that allows users to report incidents or hazards
 ### Deployed backend 
 - [https://onearcback.herokuapp.com/](https://onearcback.herokuapp.com/) - Front end can use this link as the BASE_URL to ping the back end. 
 
-## Built With
+### Built With
 
 - HTML/CSS/JavaScript
 - Heroku, Surge
@@ -43,7 +43,7 @@ OneArc is a seamless mobile app that allows users to report incidents or hazards
 - [axios](https://www.npmjs.com/package/axios) - Promise based client for the browser and node.js
 - [Moment.JS](https://momentjs.com/timezone/) - Parse & display dates/times properly.
 
-## Installation
+### Installation
 
 To install & run locally for development:
 
@@ -55,16 +55,16 @@ To install & run locally for development:
 - npm run dev (run server)
 - Use postman to test the routes
 
-## Database Structure
+### Database Structure
 
 ![](./images/ERD2.PNG)
 [https://goo.gl/tMqF9j](ERD_link)
 
-## Routes
+### Routes
 
 BASEURL = localhost:5000/
 
-## POSTMAN routes 
+### POSTMAN routes 
 [https://www.getpostman.com/collections/0659d4deea1635c2cacf](Postman_Route)
 
 ### GET requests, incidents without logging in 
