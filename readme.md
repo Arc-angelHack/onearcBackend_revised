@@ -19,6 +19,10 @@ With hurricane Harvey alone, 13 million people were affected and 135,000 homes w
 
 OneArc is a seamless mobile app that allows users to report incidents or hazards on the map. Users can also ask for resources or provide help to their local community. 
 
+### Links 
+- Global Demo Day Pitch: http://bit.ly/onearcpitch
+- Backend Github Repo: http://bit.ly/onearcbackend
+
 ### Author
 
 - Diep Truong
