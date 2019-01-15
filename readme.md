@@ -1,19 +1,30 @@
-# onearc-backend
+# ONEARC - BACKEND 
 
-This backend is deployed at [https://onearcback.herokuapp.com/](https://onearcback.herokuapp.com/).
+<p align="center">
+<img src="onearc_logo.png" width=400>
 
-This repository is the backend for the react-native application for onearc, a result of AngelHack hackathon in Seattle, WA.
+2018 AngelHack Global Demo Day Winner 
+2018 AngelHack Hackcelerator Finalist 
 
-- This application allows users to stay safe and seek help during disaster.
-- Users can report dangerours incidents around their neigborhood and view an interactive map of warnings and help requests.
-- Users can also offer help or seek help from the community.
+### The Challenge
+This project is a 4-month effort of an excited team that wants to change the way people get help during disasters. The team OneArc was formed after winning AngelHack Hackathon in Seattle, WA in July 2018. 
 
-## Author
+### Motivation 
+With hurricane Harvey alone, 13 million people were affected and 135,000 homes were either damaged or destroyed. Most of disaster relief systems are swamped when disasters hit. We built OneArc, a holistic solution, to help people stay informed and assist one another during disasters. 
+
+### Our Project 
+
+<p align="center">
+<img src="overview.png" width=1000>
+
+OneArc is a seamless mobile app that allows users to report incidents or hazards on the map. Users can also ask for resources or provide help to their local community. 
+
+### Author
 
 - Diep Truong
 - Dillon Easter
 
-## Deployed backend 
+### Deployed backend 
 - [https://onearcback.herokuapp.com/](https://onearcback.herokuapp.com/) - Front end can use this link as the BASE_URL to ping the back end. 
 
 ## Built With
